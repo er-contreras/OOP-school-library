@@ -1,4 +1,5 @@
 require './student'
+require './corrector'
 
 class Person
   attr_reader :id
@@ -9,6 +10,7 @@ class Person
     @name = name
     @age = age
     @parent_permission = parent_permission
+    @corrector = Corrector.new
   end
 
   def can_use_services?
@@ -17,6 +19,10 @@ class Person
     elsif @parent_permission == true
       false
     end
+  end
+
+  def validate_name
+    @corrector.correct_name(name)
   end
 
   private
