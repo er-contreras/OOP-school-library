@@ -7,14 +7,14 @@ class Main
   puts 'Welcome to school library app!'
   while status
     puts
-    p 'Please choose an option by enterin a number'
-    p '1 - List all books'
-    p '2 - List all people'
-    p '3 - Create a person'
-    p '4 - Create a book'
-    p '5 - Create a rental'
-    p '6 - List all rentals for a given person id'
-    p '7 - Exit'
+    puts 'Please choose an option by enterin a number'
+    puts '1 - List all books'
+    puts '2 - List all people'
+    puts '3 - Create a person'
+    puts '4 - Create a book'
+    puts '5 - Create a rental'
+    puts '6 - List all rentals for a given person id'
+    puts '7 - Exit'
 
     option = gets.chomp
 
@@ -32,11 +32,11 @@ class Main
     when '6'
       app.all_rentals_id
     when '7'
-      p 'Thank you for using this app!'
+      puts 'Thank you for using this app!'
       puts
       status = false
     else
-      p 'Sorry, you choose a wrong option'
+      puts 'Sorry, you choose a wrong option'
       puts
     end
   end

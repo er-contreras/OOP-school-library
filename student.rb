@@ -15,6 +15,3 @@ class Student < Person
     classroom.students.push(self) unless classroom.students.include?(self)
   end
 end
-
-stu1 = Student.new(13, 'erin', 'y')
-p stu1
