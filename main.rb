@@ -41,5 +41,3 @@ class Main
     end
   end
 end
-
-main
