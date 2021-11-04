@@ -4,7 +4,7 @@ require './book'
 require './rental'
 
 class App
-  attr_reader :book, :people, :rentals
+  attr_reader :books, :people, :rentals
 
   def initialize(books = [], people = [], rentals = [])
     @books = books
@@ -23,7 +23,6 @@ class App
   def create_person
     print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
     option_person = gets.chomp
-
     print 'Age: '
     age = gets.chomp
     age = 18 if age == ''
@@ -35,7 +34,7 @@ class App
     when '1'
       print 'Has parent permission? [Y/N]: '
       has_parent_permission = gets.chomp
-      has_permission = has_parent_permission.downcase == 'y'
+      has_permission = has_parent_permission.downcase == 'y' # true or false
       person = Student.new(age, name, parent_permission: has_permission)
     when '2'
       print 'Specialization: '
@@ -46,6 +45,7 @@ class App
       puts 'Sorry, you choose a wrong option'
       return
     end
+
     @people << person unless @people.include?(person)
     puts 'Person created successsfully'
   end
