@@ -4,7 +4,9 @@ require './app'
 class Main
   app = App.new
   status = true
+  puts
   puts 'Welcome to school library app!'
+
   while status
     puts
     puts 'Please choose an option by enterin a number'
@@ -32,10 +34,12 @@ class Main
     when '6'
       app.all_rentals_id
     when '7'
+      puts
       puts 'Thank you for using this app!'
       puts
       status = false
     else
+      puts
       puts 'Sorry, you choose a wrong option'
       puts
     end
