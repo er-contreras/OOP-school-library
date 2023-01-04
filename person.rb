@@ -3,7 +3,7 @@
 # Class for Person
 class Person
   attr_reader :id
-  attr_accessor :name, :age
+  attr_accessor :name, :age, :parent_permission
 
   def initialize(name, age = 'Unknown', parent_permission: true)
     @id = Random.rand(1..100)
