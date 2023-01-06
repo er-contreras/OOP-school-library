@@ -4,14 +4,17 @@ require_relative 'person'
 require_relative 'student'
 require_relative 'teacher'
 require_relative 'classroom'
+require_relative 'book'
+require_relative 'rental'
 
 student = Student.new('erick', 'B2', 12)
-student2 = Student.new('Francis', 'B2', 14)
 teacher = Teacher.new('Mateo Sin Apellido', 42, 'Doctor')
 
-classroom = Classroom.new('B4')
-classroom.add_student(student)
-classroom.students[0].classroom.label
+book = Book.new('Atomic Habits', 'James Clear')
 
-p student.classroom.students[0].name
+rental = Rental.new('12-12-2023', student, book)
+rental.person.rentals[0].book.title
 
+student.rentals[0].book.title
+
+p book.rentals[0].person.name
