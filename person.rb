@@ -1,8 +1,5 @@
-# frozen_string_literal: true
-
 require_relative 'corrector'
 
-# Class for Person
 class Person
   attr_reader :id, :rentals
   attr_accessor :name, :age, :parent_permission
