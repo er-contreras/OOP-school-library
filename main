@@ -1,7 +1,5 @@
 #! /usr/bin/env ruby
 
-# Executable file
-
 require_relative 'app'
 
 def main
@@ -47,4 +45,4 @@ def main
   end
 end
 
-main
+main # Executable file
