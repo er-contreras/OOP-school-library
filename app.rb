@@ -1,4 +1,6 @@
 require_relative 'book'
+require_relative 'student'
+require_relative 'teacher'
 
 class App
   attr_reader :books, :people, :rentals
@@ -17,7 +19,7 @@ class App
 
   def list_all_people
     puts
-    puts @people.empty? ? "Empty list" : @people
+    puts @people.empty? ? "Empty list" : @people.map { |people| "[#{people.class}] Name: #{people.name}, ID: #{people.id}, Age: #{people.age}" }
     puts
   end
 
@@ -33,7 +35,11 @@ class App
       print "Has parent permission? [Y/N]: "
       permission = gets.chomp
       puts
-      puts "Person created Succesfully"
+      student = Student.new("#{name}", "#{age}", "#{permission}")
+      if student
+        @people << student
+        puts "Person created Succesfully"
+      end
       puts
     elsif person == "2"
       print "Age: "
@@ -43,7 +49,11 @@ class App
       print "Specialization: "
       spec = gets.chomp
       puts
-      puts "Person created Succesfully"
+      teacher = Teacher.new("#{name}", "#{age}", "#{spec}")
+      if teacher
+        @people << teacher
+        puts "Person created Succesfully"
+      end
       puts
     elsif person != "1" || person != "2"
       puts "Wrong Number"
