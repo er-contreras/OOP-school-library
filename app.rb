@@ -86,11 +86,18 @@ class App
     rental = Rental.new(date, @people[person.to_i], @books[book.to_i])
     if rental
       @rentals << rental
+      puts
       puts "Rental created successfully"
     end
   end
 
   def list_all_rentals
-
+    puts
+    return puts "You don't have rentals" if @rentals.empty?
+    print "ID of person: "
+    id = gets.chomp
+    rentals = @rentals.filter { |rental| rental.person.id == id.to_i }
+    puts "Rentals: "
+    puts rentals.map { |rental| "Date: #{rental.date}, Book #{rental.book.title} by #{rental.book.author} " }
   end
 end
