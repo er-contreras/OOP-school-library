@@ -9,8 +9,9 @@ def main
   status = true
 
   puts
-  puts "Welcome to school library App!\n\n"
+  puts "Welcome to school library App!"
   while status
+    puts
     puts 'Please choose an option by enterin a number:'
     puts '1 - List all books'
     puts '2 - List all people'
