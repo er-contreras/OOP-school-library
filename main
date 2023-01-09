@@ -35,12 +35,12 @@ def main
     when '6'
       app.list_all_rentals
     when '7'
+      puts
       puts 'Thank you for using this app!'
       puts
       status = false
     else
       puts 'Sorry, you choose a wrong option'
-      puts
     end
   end
 end
