@@ -2,6 +2,16 @@
 
 require_relative 'app'
 
+@actions = {
+  '1' => :list_all_books,
+  '2' => :list_all_people,
+  '3' => :create_person,
+  '4' => :create_book,
+  '5' => :create_rental,
+  '6' => :list_all_rentals,
+  '7' => :exit
+}
+
 def main
   app = App.new
   status = true
@@ -20,28 +30,25 @@ def main
     puts '7 - Exit'
 
     option = gets.chomp
+    action = @actions[option]
 
-    case option
-    when '1'
-      app.list_all_books
-    when '2'
-      app.list_all_people
-    when '3'
-      app.create_person
-    when '4'
-      app.create_book
-    when '5'
-      app.create_rental
-    when '6'
-      app.list_all_rentals
-    when '7'
-      puts
-      puts 'Thank you for using this app!'
-      puts
+    call_case(app, action) do
       status = false
-    else
-      puts 'Sorry, you choose a wrong option'
     end
+  end
+end
+
+def call_case(app, action)
+  if action
+    case action
+    when :exit
+      puts 'Thank you for using this app!'
+      yield
+    else
+      app.send(action)
+    end
+  else
+    puts 'Sorry, you choose a wrong option'
   end
 end
 
