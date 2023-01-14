@@ -2,7 +2,6 @@
 
 require_relative 'app'
 require_relative 'manage_files'
-require 'json'
 
 class Main
   include ManageFiles

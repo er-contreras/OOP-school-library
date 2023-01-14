@@ -3,9 +3,12 @@ require_relative 'student'
 require_relative 'teacher'
 require_relative 'rental'
 require_relative 'people'
+require_relative 'manage_files'
 
 class App
+  include ManageFiles
   include People
+
   attr_reader :books, :people, :rentals
 
   def initialize(books = [], people = [], rentals = [])
@@ -23,6 +26,7 @@ class App
     puts
     return puts 'Empty list!' if @people.empty?
 
+    # puts JSON.parse(File.read('data/people.json'))
     puts(@people.map { |people| "[#{people.class}] Name: #{people.name}, ID: #{people.id}, Age: #{people.age}" })
   end
 
@@ -34,6 +38,8 @@ class App
     student_statement(person)
 
     teacher_statement(person)
+
+    ManageFiles.add_obj_to_people_file(@people)
   end
 
   def create_book
