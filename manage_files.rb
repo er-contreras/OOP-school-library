@@ -24,9 +24,9 @@ module ManageFiles
     arr = []
     people.map do |pe|
       if pe.instance_of?(Student)
-        arr << { pe.class => { name: pe.name, age: pe.age, parent_permission: pe.parent_permission } }
+        arr << { pe.class => { id: pe.id, name: pe.name, age: pe.age, parent_permission: pe.parent_permission } }
       elsif pe.instance_of?(Teacher)
-        arr << { pe.class => { name: pe.name, age: pe.age, specialization: pe.specialization } }
+        arr << { pe.class => { id: pe.id, name: pe.name, age: pe.age, specialization: pe.specialization } }
       end
     end
 
@@ -36,5 +36,9 @@ module ManageFiles
     )
 
     File.write('data/people.json', json)
+  end
+
+  def self.retrieve_data
+    File.open('data/people.json')
   end
 end

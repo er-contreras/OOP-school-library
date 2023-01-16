@@ -26,7 +26,7 @@ class App
     puts
     return puts 'Empty list!' if @people.empty?
 
-    # puts JSON.parse(File.read('data/people.json'))
+    # @people << JSON.parse(File.read('data/people.json'))
     puts(@people.map { |people| "[#{people.class}] Name: #{people.name}, ID: #{people.id}, Age: #{people.age}" })
   end
 
