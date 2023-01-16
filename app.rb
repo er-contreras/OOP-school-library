@@ -1,8 +1,8 @@
-require_relative 'book'
-require_relative 'student'
-require_relative 'teacher'
-require_relative 'rental'
-require_relative 'people'
+require_relative 'core_code/book'
+require_relative 'core_code/student'
+require_relative 'core_code/teacher'
+require_relative 'core_code/rental'
+require_relative 'core_code/people'
 require_relative 'manage_files'
 
 class App
