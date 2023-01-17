@@ -18,27 +18,25 @@ module ManageFiles
     File.new('data/rentals.json', File::CREAT)
   end
 
-  def self.save_files; end
-
   def self.add_obj_to_people_file(people)
-    arr = []
-    people.map do |pe|
+    json_object = people.each_with_object(Hash.new(0)) do |pe, instance|
       if pe.instance_of?(Student)
-        arr << { pe.class => { id: pe.id, name: pe.name, age: pe.age, parent_permission: pe.parent_permission } }
+        instance[pe.class] = { id: pe.id, name: pe.name, age: pe.age, parent_permission: pe.parent_permission }
       elsif pe.instance_of?(Teacher)
-        arr << { pe.class => { id: pe.id, name: pe.name, age: pe.age, specialization: pe.specialization } }
+        instance[pe.class] = { id: pe.id, name: pe.name, age: pe.age, specialization: pe.specialization }
       end
     end
 
     json = JSON.generate(
-      arr,
+      json_object,
       @opt
     )
 
     File.write('data/people.json', json)
   end
 
-  def self.retrieve_data
-    File.open('data/people.json')
+  def self.retrieve_data(file_path)
+    file = File.read(file_path)
+    JSON.parse(file)
   end
 end
