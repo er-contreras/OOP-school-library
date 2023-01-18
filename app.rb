@@ -11,6 +11,8 @@ class App
 
   attr_reader :books, :people, :rentals
 
+  FIELDS_TO_DISPLAY = %w[name id age].freeze
+
   def initialize(books = [], people = [], rentals = [])
     @books = books
     @people = people
@@ -24,10 +26,20 @@ class App
 
   def list_all_people
     puts
-    return puts 'Empty list!' if @people.empty?
+    url = 'data/people.json'
+    if File.size(url) <= 0
+      puts 'Empty File'
+    elsif File.size(url).positive?
+      data = ManageFiles.retrieve_data(url)
 
-    # @people << JSON.parse(File.read('data/people.json'))
-    puts(@people.map { |people| "[#{people.class}] Name: #{people.name}, ID: #{people.id}, Age: #{people.age}" })
+      data.each do |key, value|
+        output = "[#{key}]"
+        FIELDS_TO_DISPLAY.each do |field|
+          output += " #{field.capitalize}: #{value[field]}," if value.key?(field)
+        end
+        puts output.chomp(',')
+      end
+    end
   end
 
   def create_person
@@ -65,8 +77,8 @@ class App
     book = gets.chomp
     puts 'Select a person from the following list (no id)'
     puts(@people.map.with_index do |people, idx|
-           "#{idx}) [#{people.class}] Name: #{people.name}, ID: #{people.id}, Age: #{people.age}"
-         end)
+      "#{idx}) [#{people.class}] Name: #{people.name}, ID: #{people.id}, Age: #{people.age}"
+    end)
     person = gets.chomp
     print 'Date: '
     date = gets.chomp

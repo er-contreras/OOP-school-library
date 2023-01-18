@@ -27,6 +27,8 @@ module ManageFiles
       end
     end
 
+    p json_object
+
     json = JSON.generate(
       json_object,
       @opt
