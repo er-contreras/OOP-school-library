@@ -7,6 +7,7 @@ Additional description about the project and its features.
 ## Built With
 
 - Ruby
+- JSON
 - Rubocop
 - Gemfile
 
@@ -25,18 +26,18 @@ To get a local copy up and running follow these simple example steps.
   ```
   git clone https://github.com/er-contreras/OOP-school-library
   ```
-- Next go to VS Code editor and open the folder where you installed the repository.
 ### Usage
 - Don't forget to create a branch to star working on the project.
+- Type in your terminal `main` to start the executable file.
 - Now that you have everything set up you are ready to work.
 
 ## Authors
 
 👤 **Christian Erick Contreras**
 
-- GitHub: [@er-contreras](https://github.com/er-contreras)
+- GitHub: [er-contreras](https://github.com/er-contreras)
 - Linkedin: [LinkedIn](https://www.linkedin.com/in/er-contreras/)
-- Twitter: [@ChristianErick_](https://twitter.com/ChristianErick_)
+- Twitter: [ChristianErick_](https://twitter.com/ChristianErick_)
 
 ## 🤝 Contributing
 
