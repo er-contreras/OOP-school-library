@@ -1,6 +1,7 @@
 require_relative 'app'
 require 'fileutils'
 require 'json'
+require 'pry'
 
 module ManageFiles
   @opt = {
@@ -19,15 +20,16 @@ module ManageFiles
   end
 
   def self.add_obj_to_people_file(people)
-    json_object = people.each_with_object(Hash.new(0)) do |pe, instance|
-      if pe.instance_of?(Student)
-        instance[pe.class] = { id: pe.id, name: pe.name, age: pe.age, parent_permission: pe.parent_permission }
-      elsif pe.instance_of?(Teacher)
-        instance[pe.class] = { id: pe.id, name: pe.name, age: pe.age, specialization: pe.specialization }
+    # Item is the object without being into an array. The hash is just an empty hash.
+    json_object = people.each_with_object({}) do |item, hash|
+      if item.instance_of?(Student)
+        hash[item.class] ||= []
+        hash[item.class] << { id: item.id, name: item.name, age: item.age, parent_permission: item.parent_permission }
+      elsif item.instance_of?(Teacher)
+        hash[item.class] ||= []
+        hash[item.class] << { id: item.id, name: item.name, age: item.age, specialization: item.specialization }
       end
     end
-
-    p json_object
 
     json = JSON.generate(
       json_object,
